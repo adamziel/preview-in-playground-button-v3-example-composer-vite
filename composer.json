@@ -1,0 +1,16 @@
+{
+  "name": "adamziel/playground-demo-plugin",
+  "description": "Composer + Vite preview demo for WordPress Playground.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=8.0",
+    "psr/log": "^3.0"
+  },
+  "autoload": {
+    "psr-4": { "PlaygroundDemo\\": "src/" }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

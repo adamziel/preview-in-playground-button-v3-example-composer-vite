@@ -1,0 +1,31 @@
+name: PR Preview - Build
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  build:
+    uses: WordPress/action-wp-playground-pr-preview/.github/workflows/preview-build.yml@adamziel/build-command-reusable-workflows
+    with:
+      artifacts: playground-demo-plugin=build/playground-demo-plugin.zip
+      node-version: '20'
+      php-version: '8.2'
+      build-command: |
+        set -euo pipefail
+
+        # 1. PHP runtime deps only (no dev autoload / PHPUnit / etc.)
+        composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+
+        # 2. Vite bundle.
+        npm install --no-audit --no-fund
+        npm run build
+
+        # 3. Stage a slug-named dir so the zip extracts to
+        #    wp-content/plugins/playground-demo-plugin/.
+        mkdir -p stage/playground-demo-plugin build
+        rsync -a           --exclude '.git'           --exclude '.github'           --exclude 'node_modules'           --exclude 'src-js'           --exclude 'vite.config.js'           --exclude 'package*.json'           --exclude 'composer*.json'           --exclude '.gitignore'           --exclude 'stage'           --exclude 'build'           ./ stage/playground-demo-plugin/
+        ( cd stage && zip -rq ../build/playground-demo-plugin.zip playground-demo-plugin )
+
+        # Sanity-print what made it in so CI logs document the build outputs.
+        unzip -l build/playground-demo-plugin.zip | head -30
