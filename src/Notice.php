@@ -35,7 +35,7 @@ class Notice
     public static function renderNotice(): void
     {
         echo '<div class="notice notice-info" id="playground-demo-notice">';
-        echo '<p><strong>Playground Demo</strong> is active. JS counter:';
+        echo '<p><strong>Playground Demo</strong> is active — smoke test. JS counter:';
         echo ' <span id="playground-demo-count">…</span></p>';
         echo '</div>';
     }
