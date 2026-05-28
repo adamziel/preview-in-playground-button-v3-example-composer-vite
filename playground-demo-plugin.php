@@ -17,3 +17,5 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Fork smoke test: v3 preview workflows.
 
 // Fork smoke rerun after v3 fork verification fix.
+
+// Fork smoke rerun against the published v3 tag.
