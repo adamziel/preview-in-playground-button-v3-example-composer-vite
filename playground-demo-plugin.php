@@ -13,3 +13,11 @@ if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
 require_once __DIR__ . '/vendor/autoload.php';
 
 \PlaygroundDemo\Notice::register();
+
+// Fork smoke test: v3 preview workflows.
+
+// Fork smoke rerun after v3 fork verification fix.
+
+// Fork smoke rerun against the published v3 tag.
+
+// Fork smoke rerun against corrected @v3 workflow refs.
