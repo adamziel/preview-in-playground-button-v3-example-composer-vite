@@ -15,3 +15,5 @@ require_once __DIR__ . '/vendor/autoload.php';
 \PlaygroundDemo\Notice::register();
 
 // Fork smoke test: v3 preview workflows.
+
+// Fork smoke rerun after v3 fork verification fix.
