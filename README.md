@@ -1,8 +1,8 @@
 # preview-in-playground-button-v3-example-composer-vite
 
-Realistic example for the WordPress Playground v3 reusable preview workflows: a plugin that needs **both** `composer install` (PSR-4 autoload + a runtime dep) **and** `npm run build` (Vite-bundled admin JS) before it can run.
+Realistic example for the WordPress Playground v4 reusable preview workflows: a plugin that needs **both** `composer install` (PSR-4 autoload + a runtime dep) **and** `npm run build` (Vite-bundled admin JS) before it can run.
 
-Demonstrates that the v3 reusable workflows handle a multi-toolchain build with no per-step boilerplate — caller setup is still ~20 lines across two files.
+Demonstrates that the v4 reusable workflows handle a multi-toolchain build with no per-step boilerplate — caller setup is still ~20 lines across two files.
 
 ## What's in here
 
@@ -13,6 +13,6 @@ Demonstrates that the v3 reusable workflows handle a multi-toolchain build with 
 - `.github/workflows/pr-preview-build.yml` — runs `composer install --no-dev`, then `npm install && npm run build`, stages the result with rsync excludes, zips it.
 - `.github/workflows/pr-preview-publish.yml` — exposes the zip, posts the preview button.
 
-The reusable workflows are pinned to the in-development branch
-`adamziel/build-command-reusable-workflows` of
-`WordPress/action-wp-playground-pr-preview`. Repin to `@v3` once that lands.
+Both reusable workflows use the v4 release candidate from
+`WordPress/action-wp-playground-pr-preview` at `1b15093d61b5e98cdfeb31466f34ade495762cd7`.
+The repository name retains `v3` so existing links keep working.
